@@ -1,0 +1,9 @@
+.navbar-container .nav-title{
+    font-family: "Exo 2";
+    font-weight: 900;
+}
+.navbar-container{
+    /* background-color: red; */
+    margin : 0;
+
+}
