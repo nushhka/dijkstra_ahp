@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.5.1",
     "@react-sigma/core": "^3.4.2",
     "d3": "^7.8.5",
     "graphology": "^0.25.4",

@@ -1,43 +1,46 @@
-import React, { useState } from "react"
-import Graph from "./Graph.jsx"
+import React, { useState , useEffect} from "react"
+// import Graph from "./forceGraphGenerator.jsx"
+import Algo from "./Algo.jsx"
 import "./Home.css"
 const Home = () => {
-    const graph = []
+     /* defining the states for different parameters */
+
+    const [graph, setGraph] = useState([]);
     const [node1, setNode1] = useState("");
     const [node2, setNode2] = useState("");
     const [distance, setDistance] = useState("");
     const [road, setRoad] = useState("");
     const [weather, setWeather] = useState("");
     const [risk, setRisk] = useState("");
+
+    /* handle functions to handle the inputs */
     const handleChangeNode1 = (e) => {
         setNode1(e.target.value);
-        // console.log(node1);
     }
     const handleChangeNode2 = (e) => {
         setNode2(e.target.value);
-        // console.log(node2);
+       
     }
     const handleChangeRoad = (e) => {
         setRoad(e.target.value);
-        // console.log(road);
     }
     const handleChangeDistance = (e) => {
         setDistance(e.target.value);
-        // console.log(distance);
+       
     }
     const handleChangeWeather = (e) => {
         setWeather(e.target.value);
-        // console.log(weather);
+       
     }
     const handleChangeRisk = (e) => {
         setRisk(e.target.value);
-        // console.log(risk);
+        
     }
 
-    //handleSubmit function to handle the submit of fields
+    /* handleSubmit to handle the submit funciton */
 
     const handleSubmit = () => {
-        console.log("entered");
+       
         const node = {
             "node1" : node1,
             "node2" : node2,
@@ -46,18 +49,24 @@ const Home = () => {
             "weather" : weather, 
             "risk" : risk
         }
-        graph.push(node);
+    
+        setGraph(prevGraph => {
+            const updatedGraph = [...prevGraph, node];
+            return updatedGraph;
+        });
+
         setNode1("");
         setNode2("");
         setDistance("");
         setRisk("");
         setRoad("");
         setWeather("");
-
-        console.log(
-            "node1 : " + node1 + " node2 : " + node2 + " distance  : " + distance + " road : " + road + " weather : " + weather + " risk : " + risk
-        )
+        
     }
+
+    useEffect(() => {
+        // console.log("Updated Graph:", graph);
+    }, [graph]);
     
     return (
         <>
@@ -96,10 +105,11 @@ const Home = () => {
                <div className="main-item graphcontainer w-3/4 bg-gray-500 p-2 text-center">
                 Graph Container
                 
-                <Graph graph={graph}/>
+                {/* <Graph graph={graph}/> */}
                </div>
             </div>
          </div>
+         <Algo graph={graph}/>
         </>
     );
 }
