@@ -51,11 +51,11 @@
 
 
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Dataset.css';
 import GraphState from '../context/GraphState';
 
-function FileLoader(props) {
+function FileLoader({setgraph}) {
   const [fileContent, setFileContent] = useState('');
   const [jsonArray, setJsonArray] = useState(null);
 
@@ -81,20 +81,17 @@ function FileLoader(props) {
       console.error('Error parsing JSON:', error);
     }
   };
+  useEffect(()=>{
+    console.log(jsonArray)
+    setgraph(jsonArray)
+  },[jsonArray])
 
   return (
     <div className="text-center">
       <label htmlFor="file-upload" className="custom-file-upload">
         <input id="file-upload" type="file" onChange={handleFileChange} />
-        Choose File
+        Choose Dataset
       </label>
-      {/* <pre>{fileContent}</pre> */}
-      {jsonArray && (
-        <div>
-          <h2>JSON Array:</h2>
-          <pre>{JSON.stringify(jsonArray, null, 2)}</pre>
-        </div>
-      )}
 
       
     </div>

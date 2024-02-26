@@ -1,4 +1,4 @@
-import React, {  useState , useCallback} from 'react'
+import React, {  useState ,useEffect, useCallback} from 'react'
 import './App.css'
 import Navbar from "./components/Navbar.jsx"
 import Home from "./components/Home.jsx"
@@ -12,15 +12,20 @@ import GraphState from './context/GraphState.jsx'
 
 function App() {
 
-    
+   const [graph,setgraph]=useState([]) 
+   useEffect(()=>{
+    console.log('this is graph',graph)
+
+  },[graph])
 
   return (
     <>
      <div className='bg-gray-400'>
       
          <Navbar/>
-         <Dataset/>
-         <Home/>
+         <Dataset setgraph={setgraph}/>
+         <Home graph={graph}/>
+         <Algo graph={graph} />
      
       
       {/* <Algo/> */}
