@@ -1,7 +1,7 @@
 import {React, useEffect, useState} from "react"
 
 const Algo = (props) =>  {
-    console.log(props.graph.length);
+    // console.log(props.graph.length);
 
     /* Priority : distance , road, weather */
 
@@ -140,11 +140,11 @@ const Algo = (props) =>  {
     
     useEffect(() => {
         if(props.graph.length > 0){
-            console.log("apple");
+            // console.log("apple");
             let matrix = convertToMatrix(props.graph);
-            console.log(matrix);
+            // console.log(matrix);
         }
-        console.log("happened")
+        // console.log("happened")
     }, [props.graph.length]);
     
     
@@ -156,9 +156,9 @@ const Algo = (props) =>  {
 
     return (
         <>
-          <div className="algo-container m-auto bg-gray-600 p-5">
+          <div className="algo-container m-auto bg-gray-400 p-5">
             <div className="algo algo-header">
-                <h1 className="sm:text-3xl md:text-4xl border-b-4 border-gray-900 inline-block mb-2">Alogrithm Demonstration</h1>
+                <h1 className="bg-gray-700 sm:text-3xl md:text-4xl border-l-4 border-gray-800 inline-block mb-2 border-r-4 p-2">Alogrithm Demonstration</h1>
             </div>
             <div className="algo input-container flex flex-row">
                 <div className="node-item node1 w-1/6 p-1">
@@ -170,12 +170,12 @@ const Algo = (props) =>  {
                 </div>
 
                 <div className="add-node text-center w-full p-3">
-                    <button type="submit" className="bg-green-800 w-1/4 md:text-3xl" onClick={handleSubmit}>Run Algorithm</button>
+                    <button type="submit" className="bg-gray-700 text-gray-300 w-1/4 md:text-3xl border-2 border-black" onClick={handleSubmit}>Run Algorithm</button>
                 </div>
             </div>
 
             <div className="algo algo-output">
-                <h2 className="sm:text-2xl md:text-3xl mt-4 "> OPTIMUM PATH : <span className="text-gray-300">{"Node1 -> Node2 -> Node3"}</span></h2>
+                <h2 className="sm:text-2xl md:text-3xl mt-4 "> OPTIMUM PATH : <span className="text-gray-700">{"NODE1 -> NODE2 -> NODE3"}</span></h2>
             </div>
           </div>
         </>

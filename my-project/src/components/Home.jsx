@@ -1,8 +1,12 @@
-import React, { useState , useEffect} from "react"
+import React, { useState , useEffect, useContext} from "react"
 // import Graph from "./forceGraphGenerator.jsx"
 import Algo from "./Algo.jsx"
+import NewGraph from "./NewGraph.jsx"
+import graphContext from "../context/GraphContext.jsx"
 import "./Home.css"
-const Home = () => {
+const Home = (props) => {
+
+     const a = useContext(graphContext)
      /* defining the states for different parameters */
 
     const [graph, setGraph] = useState([]);
@@ -72,7 +76,7 @@ const Home = () => {
         <>
          <div className="home p-3 flex flex-col">
             {/* container that has all the input field for the algorithm. */}
-            <div className="node-container flex flex-row">
+            {/* <div className="node-container flex flex-row">
                 <div className="node-item node1 w-1/6 p-1">
                     <input type="text" placeholder="node1" name="node1" className="border-black p-1 w-full" value={node1} onChange={handleChangeNode1}/>
                 </div>
@@ -91,20 +95,20 @@ const Home = () => {
                 <div className="node-item risk w-1/6 p-1">
                     <input type="text" placeholder="risk" name="risk" className="border-black p-1 w-full" value={risk} onChange={handleChangeRisk}/>
                 </div>
-            </div>
+            </div> */}
             {/* adding a button to add the node in the graph */}
-            <div className="add-node text-center w-full p-3">
+            {/* <div className="add-node text-center w-full p-3">
                 <button type="submit" className="bg-green-800 w-1/4" onClick={handleSubmit}>Add Node</button>
-            </div>
+            </div> */}
             {/* this is the main container for the graph file and graph visualization */}
             <div className="main-container flex flex-row p-1">
-               <div className="main-item graph-text w-1/4 bg-gray-600 p-2">
-                <div className="graph-text-item graph-title"><h2 className="text-center border-b-[1px] border-gray-900">Graph</h2></div>
+               <div className="main-item graph-text w-1/4 bg-gray-300 p-2">
+                <div className="graph-text-item graph-title"><h2 className="text-center border-b-[1px] border-gray-500">Graph</h2></div>
                 <div className="graph-text-item graph-nodes"></div>
                </div>
-               <div className="main-item graphcontainer w-3/4 bg-gray-500 p-2 text-center">
-                Graph Container
-                
+               <div className="main-item graphcontainer w-3/4 bg-gray-200 p-2 text-center">
+                Graph Container : 
+                <NewGraph/>
                 {/* <Graph graph={graph}/> */}
                </div>
             </div>

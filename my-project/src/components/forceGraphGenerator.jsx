@@ -26,22 +26,42 @@ export default function forceGraphGenerator(
   };
 
   const drag = (simulation) => {
+    // const dragstarted = (d) => {
+    //   if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+    //   d.fx = d.x;
+    //   d.fy = d.y;
+    // };
+
+    // const dragged = (d) => {
+    //   d.fx = d3.event.x;
+    //   d.fy = d3.event.y;
+    // };
+
+    // const dragended = (d) => {
+    //   if (!d3.event.active) simulation.alphaTarget(0);
+    //   d.fx = null;
+    //   d.fy = null;
+    // };
+
     const dragstarted = (d) => {
-      if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+      if (d3.event && d3.event.active) simulation.alphaTarget(0.3).restart();
       d.fx = d.x;
       d.fy = d.y;
     };
-
+    
     const dragged = (d) => {
-      d.fx = d3.event.x;
-      d.fy = d3.event.y;
+      if (d3.event) {
+        d.fx = d3.event.x;
+        d.fy = d3.event.y;
+      }
     };
-
+    
     const dragended = (d) => {
-      if (!d3.event.active) simulation.alphaTarget(0);
+      if (d3.event && d3.event.active) simulation.alphaTarget(0);
       d.fx = null;
       d.fy = null;
     };
+    
 
     return d3
       .drag()
